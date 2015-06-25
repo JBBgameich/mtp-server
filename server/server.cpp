@@ -220,8 +220,8 @@ public:
             1024 * 1024 * 100,  /* 100 MB reserved space, to avoid filling the disk */
             false,
             0  /* Do not check sizes for internal storage */);
-        mtp_database->addStoragePath("/media/internal",
-                                     gettext("storage"),
+        mtp_database->addStoragePath(std::string(userdata->pw_dir),
+                                     std::string("Home"),
                                      MTP_STORAGE_FIXED_RAM, false);
         home_storage_added = false;
 
