@@ -32,7 +32,6 @@
 #include <libintl.h>
 #include <locale.h>
 
-#include <hybris/properties/properties.h>
 #include <glog/logging.h>
 
 
@@ -211,10 +210,8 @@ public:
 
     void initStorage()
     {
-        char product_name[PROP_VALUE_MAX];
-
         // Local storage
-        property_get ("ro.product.model", product_name, "LuneOS device");
+        char *product_name = getenv("MTP_SERVER_MODEL") ?: (char *)"reMarkable";
 
         home_storage = new MtpStorage(
             MTP_STORAGE_FIXED_RAM,
